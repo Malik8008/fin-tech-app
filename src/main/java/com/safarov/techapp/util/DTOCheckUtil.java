@@ -1,5 +1,6 @@
 package com.safarov.techapp.util;
 
+import com.safarov.techapp.dto.request.AuthenticationRequestDTO;
 import com.safarov.techapp.dto.request.UserRequestDTO;
 import com.safarov.techapp.dto.response.CommonResponseDTO;
 import com.safarov.techapp.dto.response.Status;
@@ -24,6 +25,12 @@ public class DTOCheckUtil {
         checkDTOInput(userRequestDTO.getPassword());
         checkDTOInput(userRequestDTO.getPin());
         checkDTOInput(userRequestDTO.getAccountRequestDTOList());
+    };
+
+    public void isValid(AuthenticationRequestDTO authenticationRequestDTO) {
+        checkDTOInput(authenticationRequestDTO.getPin());
+        checkDTOInput(authenticationRequestDTO.getPassword());
+
     };
 
     private <T> void checkDTOInput(T t){
