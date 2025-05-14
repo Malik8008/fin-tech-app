@@ -16,6 +16,7 @@ import com.safarov.techapp.util.DTOCheckUtil;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,7 +27,9 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class UserRegisterService {
+
     AccountRepository accountRepository;
+    PasswordEncoder passwordEncoder;
     UserRepository userRepository;
     DTOCheckUtil dtoCheckUtil;
 
@@ -59,7 +62,7 @@ public class UserRegisterService {
         TechUser user = TechUser.builder()
                 .name(userRequestDTO.getName())
                 .surname(userRequestDTO.getSurname())
-                .password(userRequestDTO.getPassword())
+                .password(passwordEncoder.encode(userRequestDTO.getPassword()))
                 .pin(userRequestDTO.getPin())
                 .role("USER_ROLE").build();
         user.addAccountToUser(userRequestDTO.getAccountRequestDTOList());
