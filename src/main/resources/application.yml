@@ -10,3 +10,4 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
+SECRET_KEY: ho8+w22v+^&i9lj$rc=^gg^bt&mnal*u_2el3n6w^j8_rdt#d(
